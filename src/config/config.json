@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "nodejs-posts",
+    "password": "nodejs@posts",
+    "database": "Nodejs-posts",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "nodejs-posts",
+    "password": "nodejs@posts",
+    "database": "Nodejs-posts",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "nodejs-posts",
+    "password": "nodejs@posts",
+    "database": "Nodejs-posts",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "node-practice",
+  "version": "0.0.1",
+  "description": "general practice server",
+  "main": "./src/index.ts",
+  "scripts": {
+    "start": "npm run build:prod && cross-env NODE_ENV=production node dist/index.js",
+    "dev": "npm run build:dev && cross-env NODE_ENV=development node dist/index.js",
+    "build:prod": "rimraf dist/ && tsc -p .",
+    "build:dev": "rimraf dist/ && tsc",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadusumilli/node-practice.git"
+  },
+  "author": "Nikhit Adusumilli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nadusumilli/node-practice/issues"
+  },
+  "homepage": "https://github.com/nadusumilli/node-practice#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.4.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2",
+    "typescript": "^5.5.4"
+  },
+  "resolve": {
+    "extensions": [
+      ".ts",
+      ".js",
+      ".json"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --quiet --cache --fix"
+    ],
+    "*.{json,js,ts,html}": [
+      "prettier --write"
+    ]
+  }
+}
