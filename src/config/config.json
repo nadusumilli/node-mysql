@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "nodejs-posts",
-    "password": "nodejs@posts",
-    "database": "Nodejs-posts",
-    "host": "127.0.0.1",
+    "username": "nodePost",
+    "password": "node!post1",
+    "database": "node_posts",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "nodejs-posts",
-    "password": "nodejs@posts",
-    "database": "Nodejs-posts",
-    "host": "127.0.0.1",
+    "username": "nodePost",
+    "password": "node!post1",
+    "database": "node_posts",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
-    "username": "nodejs-posts",
-    "password": "nodejs@posts",
-    "database": "Nodejs-posts",
-    "host": "127.0.0.1",
+    "username": "nodePost",
+    "password": "node!post1",
+    "database": "node_posts",
+    "host": "localhost",
     "dialect": "mysql"
   }
 }
