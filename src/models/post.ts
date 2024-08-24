@@ -13,12 +13,11 @@ const Post = (sequelize: Sequelize, dataTypes: typeof DataTypes) => {
             allowNull: false,
         },
         message: {
-            type: dataTypes.STRING,
+            type: dataTypes.STRING(200),
             allowNull: false,
         },
-        creator: {
+        image: {
             type: dataTypes.STRING,
-            allowNull: false,
         },
         tags: {
             type: dataTypes.STRING,
@@ -30,11 +29,42 @@ const Post = (sequelize: Sequelize, dataTypes: typeof DataTypes) => {
             type: dataTypes.INTEGER,
             defaultValue: 0,
         },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: false,
+            defaultValue: dataTypes.NOW,
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: false,
+            defaultValue: dataTypes.NOW,
+        },
+        createdBy: {
+            type: dataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Users',
+                key: 'id',
+            },
+            onDelete: 'cascade',
+            onUpdate: 'cascade',
+        },
+        updatedBy: {
+            type: dataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Users',
+                key: 'id',
+            },
+            onDelete: 'cascade',
+            onUpdate: 'cascade',
+        },
     });
 
     return Post;
 };
 
+// Calling the database to create a new post.
 export const createNewPost = async (post: typeof db.Post) => {
     try {
         return [await db.Post.create(post), null];
@@ -43,6 +73,7 @@ export const createNewPost = async (post: typeof db.Post) => {
     }
 };
 
+// Calling the database to find a post by id.
 export const findPost = async (id: string) => {
     try {
         return [
@@ -58,6 +89,7 @@ export const findPost = async (id: string) => {
     }
 };
 
+// Calling the database to update a fetch all posts.
 export const findAllPosts = async () => {
     try {
         return [await db.Post.findAll(), null];
@@ -66,6 +98,7 @@ export const findAllPosts = async () => {
     }
 };
 
+// Calling the database to update a post by id.
 export const updatePostById = async (id: number, post: typeof db.Post) => {
     try {
         return [await db.Post.update(post, { where: { id } }), null];
@@ -74,6 +107,7 @@ export const updatePostById = async (id: number, post: typeof db.Post) => {
     }
 };
 
+// Calling the database to delete a post by id.
 export const deletePostById = async (id: string) => {
     try {
         return [

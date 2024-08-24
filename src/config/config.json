@@ -2,21 +2,21 @@
   "development": {
     "username": "nodePost",
     "password": "node!post1",
-    "database": "node_posts",
+    "database": "social",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "nodePost",
     "password": "node!post1",
-    "database": "node_posts",
+    "database": "social",
     "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
     "username": "nodePost",
     "password": "node!post1",
-    "database": "node_posts",
+    "database": "social",
     "host": "localhost",
     "dialect": "mysql"
   }

@@ -7,6 +7,7 @@ import {
     updatePostById,
 } from '../models/post';
 
+// Fetch all posts from the database.
 export const fetchAllPosts = async (req: Request, res: Response) => {
     const [data, err] = await findAllPosts();
     if (err) {
@@ -16,6 +17,7 @@ export const fetchAllPosts = async (req: Request, res: Response) => {
     }
 };
 
+// Fetch a post by id from the database.
 export const fetchPostById = async (req: Request, res: Response) => {
     const { id } = req.params;
     const [data, err] = await findPost(id);
@@ -26,6 +28,7 @@ export const fetchPostById = async (req: Request, res: Response) => {
     }
 };
 
+// Create a new post in the database.
 export const createPost = async (req: Request, res: Response) => {
     const post = req.body;
     const [data, err] = await createNewPost(post);
@@ -36,6 +39,7 @@ export const createPost = async (req: Request, res: Response) => {
     }
 };
 
+// Update a post in the database.
 export const updatePost = async (req: Request, res: Response) => {
     const { id } = req.params;
     const post = req.body;
@@ -47,6 +51,7 @@ export const updatePost = async (req: Request, res: Response) => {
     }
 };
 
+// Delete a post from the database.
 export const deletePost = async (req: Request, res: Response) => {
     const { id } = req.params;
     await deletePostById(id);

@@ -1,11 +1,12 @@
-import fs from 'fs';
-import path from 'path';
 import process from 'process';
 import { DataTypes, Sequelize } from 'sequelize';
 import databaseConfigs from '../config/config.json';
+import Comment from './comment';
+import Post from './post';
+import Story from './story';
+import User from './user';
 
 const db: { [key: string]: any } = {};
-const basename = path.basename(__filename);
 const config = (databaseConfigs as any)[process.env.NODE_ENV ?? 'development'];
 
 let sequelize = new Sequelize(
@@ -15,28 +16,15 @@ let sequelize = new Sequelize(
     { ...config }
 );
 
-fs.readdirSync(__dirname)
-    .filter((file) => {
-        return (
-            file.indexOf('.') !== 0 &&
-            file !== basename &&
-            (file.slice(-3) === '.js' || file.slice(-3) === '.ts') &&
-            file.indexOf('.test.js') === -1
-        );
-    })
-    .forEach(async (file) => {
-        const model = await import(path.join(__dirname, file)).then(
-            (module) => {
-                return module.default(sequelize, DataTypes);
-            }
-        );
-        db[model.name] = model;
-    });
+const models: any = {
+    User: User(sequelize, DataTypes),
+    Post: Post(sequelize, DataTypes),
+    Story: Story(sequelize, DataTypes),
+    Comment: Comment(sequelize, DataTypes),
+};
 
-Object.keys(db).forEach((modelName) => {
-    if (db[modelName].associate) {
-        db[modelName].associate(db);
-    }
+Object.keys(models).forEach((modelName) => {
+    db[modelName] = models[modelName];
 });
 
 db.sequelize = sequelize;
